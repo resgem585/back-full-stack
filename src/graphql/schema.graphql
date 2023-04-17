@@ -1,0 +1,38 @@
+type Query {
+  #Get
+  getMovies:[Movie]
+  getUser:[User]
+
+  #Find By Movie title
+ getMovieByTitle(title: String): [Movie]
+  #Find User by title and password
+  login(email:String, password:String): User
+}
+
+type Mutation {
+  #Create 
+  createUser(email:String, password:String): [User]
+  createMovie(title:String,description:String, likes:Int, dateOfReleased:String,image:String): Movie
+  #Update
+  updateMovie(_id: ID,title:String,description:String, likes:Int, dateOfReleased:String,image:String): Movie
+  updateUser(_id: ID, email:String, password:String): User
+  #Delete
+  deleteMovie(_id: ID): Movie
+  deleteUser(_id: ID): User
+}
+
+type User {
+  _id: ID
+  email:String
+  password:String
+}
+
+
+type Movie {
+    _id: ID
+    title: String
+    description:String
+    likes: Int
+    dateOfReleased:String
+    image:String
+}
